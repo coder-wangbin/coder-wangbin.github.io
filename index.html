@@ -90,7 +90,7 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
   <div class="avatar">CW</div>
   <h1>coder-wangbin</h1>
   <p class="hook">"瓶颈不在模型，在模型外的工程系统。"</p>
-  <p class="subtitle">Go 后端开发 · 6+ 年经验 · 专注把 AI 真正接入研发全流程——从需求分析到自动部署、从代码生成到故障自愈</p>
+  <p class="subtitle" id="hero-sub">Go 后端开发 · 专注把 AI 真正接入研发全流程——从需求分析到自动部署、从代码生成到故障自愈</p>
   <div class="tags">
     <span class="tag">Go</span><span class="tag">Kubernetes</span><span class="tag">DevOps</span>
     <span class="tag">MCP 协议</span><span class="tag">lark-cli</span><span class="tag">OpenCode / Codex</span>
@@ -187,6 +187,7 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
 </div>
 
 <script>
+
 // Theme toggle
 (function(){
   const saved = localStorage.getItem('theme');
@@ -242,6 +243,17 @@ document.querySelectorAll('.num[data-target]').forEach(el=>countObs.observe(el))
   }
   draw();
 })();
+
+(function(){
+  var y = new Date().getFullYear() - 2019;
+  // Hero subtitle
+  var sub = document.getElementById('hero-sub');
+  if(sub) sub.textContent = 'Go 后端开发 · ' + y + '+ 年经验 · 专注把 AI 真正接入研发全流程——从需求分析到自动部署、从代码生成到故障自愈';
+  // Stats
+  var stats = document.querySelectorAll('.num[data-target]');
+  if(stats.length > 0) stats[0].dataset.target = y;
+})();
+
 </script>
 </body>
 </html>
