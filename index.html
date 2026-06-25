@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>王彬 · coder-wangbin</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --fg: #1f2328;
+  --muted: #656d76;
+  --border: #d0d7de;
+  --accent: #0969da;
+  --accent-light: #ddf4ff;
+  --radius: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --fg: #e6edf3;
+    --muted: #8b949e;
+    --border: #30363d;
+    --accent: #58a6ff;
+    --accent-light: #0d419d;
+  }
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--fg); line-height: 1.6;
+  max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+h1 { font-size: 2rem; font-weight: 700; }
+h2 { font-size: 1.25rem; margin-top: 2.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+h3 { font-size: 1rem; margin-top: 1.5rem; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.tag {
+  display: inline-block; background: var(--accent-light); color: var(--accent);
+  padding: 2px 10px; border-radius: 12px; font-size: 0.85rem; margin: 3px 6px 3px 0;
+}
+.muted { color: var(--muted); font-size: 0.9rem; }
+.card {
+  border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.5rem; margin: 1rem 0;
+}
+.card p { margin-top: 0.5rem; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { border: 1px solid var(--border); padding: 0.5rem 0.75rem; text-align: left; }
+th { background: var(--accent-light); font-weight: 600; }
+.links a { margin-right: 1.5rem; }
+.footer { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.flow-box {
+  font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; line-height: 1.8;
+  background: var(--accent-light); border-radius: var(--radius); padding: 1.2rem 1.5rem;
+  white-space: pre; overflow-x: auto; margin: 1rem 0;
+}
+</style>
+</head>
+<body>
+
+<h1>王彬 <span class="muted">coder-wangbin</span></h1>
+<p class="links">
+  <a href="mailto:coder.wangbin@gmail.com">📧 Email</a>
+  <a href="https://github.com/coder-wangbin">🐙 GitHub</a>
+  <a href="https://github.com/coder-wangbin/opencode-skill-localizer">🛠 Skill Localizer</a>
+</p>
+<p>
+  <span class="tag">Go</span><span class="tag">Kubernetes</span><span class="tag">DevOps</span>
+  <span class="tag">AI Coding</span><span class="tag">MCP</span><span class="tag">OpenCode</span>
+</p>
+
+<h2>👨‍💻 About</h2>
+<p>
+  Go 后端开发工程师，<strong>6+ 年经验</strong>，当前就职于 <strong>Langboat（浪舟）</strong>。
+  专注于 AI 驱动的全链路研发效能提升——从需求分析到自动部署、故障自愈，
+  设计并落地了一套把 AI 真正接入研发全流程的工具链。
+</p>
+
+<h2>🏗️ AI-Driven Full-Chain Workflow</h2>
+<p class="muted">把需求分析、方案设计、编码开发、部署验证、故障排查串成闭环的 AI 驱动研发管线</p>
+
+<div class="flow-box">
+┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
+│  PRD Doc │───▶│Req Analysis│───▶│Design Spec│───▶│  Coding   │───▶│ Git Push  │
+└──────────┘    └──────────┘    └──────────┘    └──────────┘    └──────────┘
+     ▲                                 │                               │
+     │                          ┌──────┘                        ┌──────┘
+     │                   Agent reads docs               lb-CLI auto deploy
+     │                   Agent writes spec                    │
+     │                          │                         ┌──────┘
+     │                   CodeGraph context               │
+     │                   ulw-loop self-verify      ┌──────┘
+     │                          │                  │
+┌────┴──────────────────┐  ┌────┴──────┐    ┌──────┴──────┐    ┌──────────┐
+│  Bug Report           │  │Self-Verify│    │ K8s Deploy  │───▶│  Healthy? │
+│  (Agent monitors)     │  │(build/test│    │(lb-diagnose)│    └──────────┘
+│  → Auto Fix → Deploy  │  │    /LSP)  │    └─────────────┘     Yes│   │No
+└───────────────────────┘  └─────┬──────┘                         │   │
+                                 │                                │   │
+                          ┌──────┘                         ┌──────┘   └──┐
+                          │ Oracle Review                  │ Done       │ Alert
+                          ├─ Pass ─────────────────────────┘            │
+                          └─ Reject ──▶ Redo from start ◀───────────────┘
+</div>
+
+<h3>ulw-loop: Oracle Gate</h3>
+<p>
+  AI 写完代码不是终点。<strong>Oracle 审核是最后一道门禁</strong>——审核不通过就打回重做，持续 loop 直到通过。
+  这确保了 AI 的输出质量有人把关，而不是"生成即交付"。
+</p>
+
+<h2>⚡ Before vs After</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Stage</th><th>Before (Manual)</th><th>After (AI-Driven)</th></tr></thead>
+<tbody>
+<tr><td><strong>Req Analysis</strong></td><td>Download PRD, read line-by-line, catch gaps by experience</td><td>Agent reads docs, auto-flags gaps & inconsistencies</td></tr>
+<tr><td><strong>Design Spec</strong></td><td>Write manually, copy-paste; docs lag behind code</td><td>Agent generates spec & syncs in real-time</td></tr>
+<tr><td><strong>DB Config</strong></td><td>Manually switch per git branch; forgot once → wrong DB</td><td>Git hook auto-syncs DSN on checkout, hot-reload</td></tr>
+<tr><td><strong>Coding</strong></td><td>Write → compile → deploy → test (all manual)</td><td>ulw-loop: plan → code → build → test → Oracle review</td></tr>
+<tr><td><strong>Deploy</strong></td><td>Open Kuboard → find Deployment → update image → wait</td><td>git push → CI → auto-deploy → health check → notify</td></tr>
+<tr><td><strong>Diagnosis</strong></td><td>Copy CI/K8s logs → paste to AI → human fixes</td><td>Agent reads logs via MCP, diagnoses, self-heals simple issues</td></tr>
+<tr><td><strong>Bug Fix</strong></td><td>QA reports → locate → fix → deploy → notify (fix 5 min, workflow 4 hr)</td><td>Agent monitors bug list → auto-fix → verify → deploy → notify</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>🧰 Tech Stack</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Languages & Frameworks</h3>
+    <p><span class="tag">Go</span><span class="tag">Python</span><span class="tag">Shell</span></p>
+  </div>
+  <div class="card">
+    <h3>Cloud Native</h3>
+    <p><span class="tag">Kubernetes</span><span class="tag">Docker</span><span class="tag">Kuboard</span></p>
+  </div>
+  <div class="card">
+    <h3>AI & Automation</h3>
+    <p><span class="tag">OpenCode</span><span class="tag">Codex</span><span class="tag">Claude Code</span><span class="tag">Lark CLI</span></p>
+  </div>
+  <div class="card">
+    <h3>Infrastructure</h3>
+    <p><span class="tag">GitLab CI</span><span class="tag">MySQL</span><span class="tag">Redis</span><span class="tag">CodeGraph</span><span class="tag">MCP</span></p>
+  </div>
+</div>
+
+<h2>🚀 Open Source</h2>
+<div class="card">
+  <h3><a href="https://github.com/coder-wangbin/opencode-skill-localizer">opencode-skill-localizer</a></h3>
+  <p>Skill 描述本地化工具 — 使用 git skip-worktree 保护自定义翻译不被 git pull 覆盖。支持批量替换、符号链接发现。</p>
+  <span class="tag">Shell</span><span class="tag">Git</span><span class="tag">OpenCode</span>
+</div>
+<div class="card">
+  <h3><a href="https://github.com/coder-wangbin/codex-goal-parallel">codex-goal-parallel</a></h3>
+  <p>CodeX skill：自动并行任务分解 + 子 Agent 生命周期管理</p>
+  <span class="tag">CodeX</span><span class="tag">AI Agent</span>
+</div>
+
+<h2>🔧 Internal Toolchain</h2>
+<div class="card">
+  <h3>K8s Operations MCP Server</h3>
+  <p>11 tools — list_pods, get_logs, diagnose, events, restart_deployment, get_pipeline, get_job_logs, get_ingress, patch_ingress_tls, deployment_status, send_feishu_notification. Built on Kuboard SSO + K8s API proxy.</p>
+</div>
+<div class="card">
+  <h3>Database MCP Server</h3>
+  <p>Agent-driven database queries with branch-switch auto-sync via Git post-checkout hooks. Go DSN → MySQL DSN auto-conversion, config hot-reload.</p>
+</div>
+
+<div class="footer">
+  <p class="muted">"The bottleneck is not the model — it's the engineering system outside the model."</p>
+  <p><a href="https://github.com/coder-wangbin">🐙 GitHub Profile</a></p>
+</div>
+
+</body>
+</html>
