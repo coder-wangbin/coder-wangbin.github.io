@@ -10,42 +10,51 @@
   --bg: #ffffff; --bg2: #f8fafc; --bg3: #f1f5f9;
   --fg: #0f172a; --fg2: #334155; --fg3: #64748b;
   --border: #e2e8f0; --accent: #2563eb; --accent2: #3b82f6;
-  --g1: linear-gradient(135deg,#2563eb,#7c3aed); --g2: linear-gradient(135deg,#059669,#0d9488);
+  --g1: linear-gradient(135deg,#2563eb,#7c3aed);
   --radius: 12px; --shadow: 0 1px 3px rgba(0,0,0,.06);
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f172a; --bg2: #1e293b; --bg3: #334155;
-    --fg: #f1f5f9; --fg2: #cbd5e1; --fg3: #94a3b8;
-    --border: #334155; --shadow: 0 1px 3px rgba(0,0,0,.3);
-  }
+.dark {
+  --bg: #0f172a; --bg2: #1e293b; --bg3: #334155;
+  --fg: #f1f5f9; --fg2: #cbd5e1; --fg3: #94a3b8;
+  --border: #334155; --shadow: 0 1px 3px rgba(0,0,0,.3);
 }
+@media (prefers-color-scheme: dark) { :root { --bg:#0f172a;--bg2:#1e293b;--bg3:#334155;--fg:#f1f5f9;--fg2:#cbd5e1;--fg3:#94a3b8;--border:#334155;--shadow:0 1px 3px rgba(0,0,0,.3); } }
 * { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
 body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:var(--bg); color:var(--fg); line-height:1.7; }
 .container { max-width:960px; margin:0 auto; padding:0 1.5rem; }
 a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
 
-/* Hero */
+/* Theme toggle */
+.theme-btn { position:fixed; top:1rem; right:1rem; z-index:100; width:40px; height:40px; border-radius:50%; border:2px solid var(--border); background:var(--bg2); color:var(--fg); cursor:pointer; font-size:1.2rem; display:flex; align-items:center; justify-content:center; transition:all .2s; }
+.theme-btn:hover { transform:scale(1.1); }
+
+/* Scroll reveal */
+.reveal { opacity:0; transform:translateY(30px); transition:opacity .6s,transform .6s; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* Particles */
+#particles { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; opacity:.3; }
+.container,.hero,.footer { position:relative; z-index:1; }
+
 .hero { padding:5rem 0 3rem; text-align:center; border-bottom:1px solid var(--border); }
 .avatar { width:96px; height:96px; border-radius:50%; background:var(--g1); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:2.2rem; font-weight:800; margin-bottom:1.2rem; }
 .hero h1 { font-size:2.4rem; font-weight:800; }
-.hero .subtitle { font-size:1.15rem; color:var(--fg2); margin:0.6rem 0 1rem; max-width:600px; margin-left:auto; margin-right:auto; }
+.hero .subtitle { font-size:1.15rem; color:var(--fg2); margin:0.6rem 0 1rem; max-width:620px; margin-left:auto; margin-right:auto; }
+.hero .hook { font-size:.95rem; color:var(--accent); font-style:italic; margin-bottom:.8rem; }
 .tags { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; }
 .tag { padding:4px 14px; border-radius:20px; font-size:.8rem; font-weight:500; background:var(--bg3); color:var(--fg2); }
 
-/* Stats Bar */
 .stats-bar { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; padding:2.5rem 0; }
 .stat-item { background:var(--bg2); border-radius:var(--radius); padding:1.5rem 1rem; text-align:center; box-shadow:var(--shadow); }
 .stat-item .num { font-size:2rem; font-weight:800; background:var(--g1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 .stat-item .label { font-size:.82rem; color:var(--fg3); margin-top:.3rem; }
 @media (max-width:600px) { .stats-bar { grid-template-columns:repeat(2,1fr); } }
 
-/* Sections */
 .section { padding:2.5rem 0; }
 .section h2 { font-size:1.35rem; font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:.5rem; }
 .section h2::after { content:''; flex:1; height:1px; background:var(--border); }
 
-/* Pipeline Flow */
 .pipeline { display:grid; grid-template-columns:repeat(7,1fr); gap:0; background:var(--bg2); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
 .pipe-step { padding:1rem .5rem; text-align:center; border-right:1px solid var(--border); position:relative; }
 .pipe-step:last-child { border-right:none; }
@@ -54,10 +63,9 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
 .pipe-step p { font-size:.7rem; color:var(--fg3); line-height:1.4; }
 @media (max-width:768px) { .pipeline { grid-template-columns:1fr; } .pipe-step { border-right:none; border-bottom:1px solid var(--border); text-align:left; padding:1rem; display:flex; gap:.8rem; align-items:center; } .pipe-step:last-child { border-bottom:none; } }
 
-/* Cards */
 .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; }
-.card { background:var(--bg2); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow); border:1px solid var(--border); transition:transform .2s; }
-.card:hover { transform:translateY(-2px); }
+.card { background:var(--bg2); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow); border:1px solid var(--border); transition:transform .25s,box-shadow .25s; }
+.card:hover { transform:translateY(-4px) scale(1.01); box-shadow:0 8px 24px rgba(0,0,0,.12); }
 .card h3 { font-size:1.05rem; margin-bottom:.6rem; color:var(--fg); }
 .card h3 a { color:inherit; }
 .card p { font-size:.85rem; color:var(--fg2); margin-bottom:.5rem; }
@@ -65,12 +73,6 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
 .card ul li { margin-bottom:.2rem; }
 .card .mini { padding:2px 10px; border-radius:12px; font-size:.7rem; background:var(--bg3); color:var(--fg3); display:inline-block; margin:2px 4px 2px 0; }
 
-/* Highlight box */
-.highlight { background:var(--bg2); border-left:4px solid var(--accent); border-radius:0 var(--radius) var(--radius) 0; padding:1.2rem 1.5rem; margin:1rem 0; }
-.highlight h4 { font-size:.9rem; font-weight:600; margin-bottom:.3rem; }
-.highlight p { font-size:.82rem; color:var(--fg2); }
-
-/* 2-col grid */
 .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
 @media (max-width:640px) { .grid2 { grid-template-columns:1fr; } }
 
@@ -80,9 +82,13 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
 </head>
 <body>
 
+<button class="theme-btn" onclick="toggleTheme()" title="切换主题">🌓</button>
+<canvas id="particles"></canvas>
+
 <div class="hero">
   <div class="avatar">CW</div>
   <h1>coder-wangbin</h1>
+  <p class="hook">"瓶颈不在模型，在模型外的工程系统。"</p>
   <p class="subtitle">Go 后端开发 · 6+ 年经验 · 专注把 AI 真正接入研发全流程——从需求分析到自动部署、从代码生成到故障自愈</p>
   <div class="tags">
     <span class="tag">Go</span><span class="tag">Kubernetes</span><span class="tag">DevOps</span>
@@ -93,18 +99,15 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
 
 <div class="container">
 
-<!-- Stats -->
-<div class="stats-bar">
-  <div class="stat-item"><div class="num">7</div><div class="label">研发环节自动化</div></div>
-  <div class="stat-item"><div class="num">11</div><div class="label">个 MCP 运维工具</div></div>
-  <div class="stat-item"><div class="num">10+</div><div class="label">个 CodeGraph 工具</div></div>
-  <div class="stat-item"><div class="num">20+</div><div class="label">语言代码图谱支持</div></div>
+<div class="stats-bar reveal">
+  <div class="stat-item"><div class="num" data-target="7">0</div><div class="label">研发环节自动化</div></div>
+  <div class="stat-item"><div class="num" data-target="11">0</div><div class="label">个 MCP 运维工具</div></div>
+  <div class="stat-item"><div class="num" data-target="10">0</div><div class="label">个 CodeGraph 工具</div></div>
+  <div class="stat-item"><div class="num" data-target="20">0</div><div class="label">语言代码图谱支持</div></div>
 </div>
 
-<!-- Pipeline -->
-<div class="section">
+<div class="section reveal">
   <h2>🏗️ AI 驱动的全链路研发管线</h2>
-  <p style="color:var(--fg3);font-size:.9rem;margin-bottom:1rem;">把传统研发流程中 AI 帮不上忙的环节逐个击破，串成一条可执行、可回流的完整链路</p>
   <div class="pipeline">
     <div class="pipe-step"><div class="step-num">1</div><h4>需求分析</h4><p>lark-cli 读 PRD<br>AI 查漏补缺</p></div>
     <div class="pipe-step"><div class="step-num">2</div><h4>方案设计</h4><p>lark-cli 写方案<br>接口文档同步</p></div>
@@ -116,165 +119,53 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
   </div>
 </div>
 
-<!-- BEFORE vs AFTER -->
-<div class="section">
+<div class="section reveal">
   <h2>⚡ 效果对比：以前 vs 现在</h2>
   <div class="grid2">
-    <div class="card">
-      <h3>📋 需求分析</h3>
-      <p><b>以前</b>：下载 PRD 逐字读，漏洞靠经验<br><b>现在</b>：AI 自动读、自动查漏补缺</p>
-      <span class="mini">半天 → 10-60 分钟</span>
-    </div>
-    <div class="card">
-      <h3>📝 方案 & 文档</h3>
-      <p><b>以前</b>：手写方案，复制粘贴到飞书<br><b>现在</b>：AI 生成方案，同步到文档</p>
-      <span class="mini">1-2 天 → 对话中同步产出</span>
-    </div>
-    <div class="card">
-      <h3>💻 编码 & 验证</h3>
-      <p><b>以前</b>：AI 写完不管编译测试<br><b>现在</b>：ulw-loop 编译→测试→审核循环</p>
-      <span class="mini">2-3 天 → 目标驱动自验证</span>
-    </div>
-    <div class="card">
-      <h3>🗄️ 数据库切换</h3>
-      <p><b>以前</b>：切分支手动改 DSN，忘过切错<br><b>现在</b>：Git hook 自动同步，热重载</p>
-      <span class="mini">手动 → 零操作</span>
-    </div>
-    <div class="card">
-      <h3>🚀 部署上线</h3>
-      <p><b>以前</b>：打开 Kuboard → 手动更新镜像<br><b>现在</b>：push → CI → lb 自动部署</p>
-      <span class="mini">30 分钟 → 全自动</span>
-    </div>
-    <div class="card">
-      <h3>🩺 故障排查</h3>
-      <p><b>以前</b>：复制 CI/K8s 日志贴给 AI<br><b>现在</b>：AI 直接读日志，自动诊断</p>
-      <span class="mini">1-2 小时 → Agent 诊断</span>
-    </div>
-    <div class="card">
-      <h3>🐛 Bug 修复</h3>
-      <p><b>以前</b>：改代码 5 分钟，走流程 4 小时<br><b>现在</b>：AI 监控 Bug 列表，自动修→部署</p>
-      <span class="mini">半天 → 自动闭环</span>
-    </div>
-    <div class="card">
-      <h3>📖 代码搜索</h3>
-      <p><b>以前</b>：grep + read 链，耗 token<br><b>现在</b>：CodeGraph 语义搜索 MCP</p>
-      <span class="mini">token↓ 工具调用↓</span>
-    </div>
+    <div class="card"><h3>📋 需求分析</h3><p><b>以前</b>：下载 PRD 逐字读，漏洞靠经验<br><b>现在</b>：AI 自动读、自动查漏补缺</p><span class="mini">半天 → 10-60 分钟</span></div>
+    <div class="card"><h3>📝 方案 & 文档</h3><p><b>以前</b>：手写方案，复制粘贴到飞书<br><b>现在</b>：AI 生成方案，同步到文档</p><span class="mini">1-2 天 → 对话中同步产出</span></div>
+    <div class="card"><h3>💻 编码 & 验证</h3><p><b>以前</b>：AI 写完不管编译测试<br><b>现在</b>：ulw-loop 编译→测试→审核循环</p><span class="mini">2-3 天 → 目标驱动自验证</span></div>
+    <div class="card"><h3>🗄️ 数据库切换</h3><p><b>以前</b>：切分支手动改 DSN，忘过切错<br><b>现在</b>：Git hook 自动同步，热重载</p><span class="mini">手动 → 零操作</span></div>
+    <div class="card"><h3>🚀 部署上线</h3><p><b>以前</b>：打开 Kuboard → 手动更新镜像<br><b>现在</b>：push → CI → lb 自动部署</p><span class="mini">30 分钟 → 全自动</span></div>
+    <div class="card"><h3>🩺 故障排查</h3><p><b>以前</b>：复制 CI/K8s 日志贴给 AI<br><b>现在</b>：AI 直接读日志，自动诊断</p><span class="mini">1-2 小时 → Agent 诊断</span></div>
+    <div class="card"><h3>🐛 Bug 修复</h3><p><b>以前</b>：改代码 5 分钟，走流程 4 小时<br><b>现在</b>：AI 监控 Bug 列表，自动修→部署</p><span class="mini">半天 → 自动闭环</span></div>
+    <div class="card"><h3>📖 代码搜索</h3><p><b>以前</b>：grep + read 链，耗 token<br><b>现在</b>：CodeGraph 语义搜索 MCP</p><span class="mini">token↓ 工具调用↓</span></div>
   </div>
 </div>
 
-<!-- Projects Deep Dive -->
-<div class="section">
+<div class="section reveal">
   <h2>🔧 核心工具链</h2>
   <div class="cards">
-    <div class="card">
-      <h3>lb CLI + MCP Server</h3>
-      <p>让 AI Agent 能直接操作 K8s 和 GitLab CI 的全套运维工具</p>
-      <ul>
-        <li>11 个 MCP 工具：list_pods / get_logs / diagnose / events / restart / pipeline / job_logs / ingress / tls / status / notify</li>
-        <li>Kuboard SSO 认证（5 步自动完成）+ K8s API 代理</li>
-        <li>Strategic Merge Patch 滚动更新 + 镜像比对跳过</li>
-        <li>飞书通知：一次 push 一条聚合消息，避免 webhook 重复推送</li>
-        <li>关联部署（linked_deployments）+ 自动获取 CI tag</li>
-      </ul>
-      <span class="mini">Go</span><span class="mini">K8s</span><span class="mini">MCP</span>
-    </div>
-    <div class="card">
-      <h3>dbhub MCP + Git Hook</h3>
-      <p>分支切换自动同步数据库配置，再也不用担心切错库</p>
-      <ul>
-        <li>post-checkout hook 检测分支切换 → 读 conf.yml → 转 DSN → 写 dbhub.toml</li>
-        <li>config-watcher 500ms 防抖后热重载连接</li>
-        <li>Go DSN (user:pass@tcp(host:port)/db) → MySQL DSN 自动转换</li>
-        <li>多项目扩展：&lt;项目名&gt;-current source_id，互不冲突</li>
-        <li>Agent 通过 MCP 始终连接正确数据库</li>
-      </ul>
-      <span class="mini">Go</span><span class="mini">MySQL</span><span class="mini">Git</span>
-    </div>
-    <div class="card">
-      <h3>CodeGraph 代码知识图谱</h3>
-      <p>将代码解析成交互式知识图谱，MCP 语义搜索代替 grep</p>
-      <ul>
-        <li>10 个 MCP 工具：context / search / explore / trace / callers / callees / impact / node / files / status</li>
-        <li>支持 Go / TypeScript / Python / Rust / Java 等 20+ 语言</li>
-        <li>多分支项目最佳实践：切分支后自动增量同步索引</li>
-        <li>Go 项目特殊配置：框架路由识别、vendor 目录处理</li>
-      </ul>
-      <span class="mini">MCP</span><span class="mini">Go</span><span class="mini">TS</span>
-    </div>
-    <div class="card">
-      <h3>CCX 多模型路由</h3>
-      <p>CodeX + CCX 接入 DeepSeek & DashScope 多模型</p>
-      <ul>
-        <li>双通道：DeepSeek（文本推理）+ DashScope / 千问（多模态视觉）</li>
-        <li>视觉路由机制：自动根据请求类型选择模型通道</li>
-        <li>踩坑：baseUrl 缺少 /v1、serviceType 错误、模型名错误</li>
-        <li>多 API Key 管理 + 直接 API 测试验证</li>
-      </ul>
-      <span class="mini">CCX</span><span class="mini">DeepSeek</span><span class="mini">DashScope</span>
-    </div>
-    <div class="card">
-      <h3>OpenCode 开发环境</h3>
-      <p>从安装到 ulw-loop 模式的完整配置体系</p>
-      <ul>
-        <li>ulw-loop 模式：持续工作→自验证→Oracle 审核→不通过重来</li>
-        <li>Ghostty 终端 + yazi 文件管理器搭配</li>
-        <li>多轮对话上下文管理策略</li>
-        <li>插件 & MCP 生态：CodeGraph / dbhub / lb / lark-cli / fmt / md-table</li>
-        <li>配置自动更新脚本 + /handoff 会话恢复</li>
-      </ul>
-      <span class="mini">OpenCode</span><span class="mini">Terminal</span>
-    </div>
-    <div class="card">
-      <h3>Go 开发效率工具</h3>
-      <p>日常开发中积累的实用工具和配置</p>
-      <ul>
-        <li>Air 热编译：保存即重载，秒级反馈</li>
-        <li>AGENTS.md 项目记忆：自动注入上下文，跨会话继承知识</li>
-        <li>CHANGELOG.md 生命周期管理：hook 检测自动提醒</li>
-        <li>git worktree 隔离开发 + TDD + subagent-driven 模式</li>
-      </ul>
-      <span class="mini">Go</span><span class="mini">DevTools</span>
-    </div>
+    <div class="card"><h3>lb CLI + MCP Server</h3><p>让 AI Agent 能直接操作 K8s 和 GitLab CI</p><ul><li>11 个 MCP 工具：pods / logs / diagnose / events / restart / pipeline / job_logs / ingress / tls / status / notify</li><li>Kuboard SSO 认证（5 步）+ K8s API 代理</li><li>Strategic Merge Patch 滚动更新 + 镜像比对跳过</li><li>关联部署 + 飞书通知（一次 push 聚合）</li></ul><span class="mini">Go</span><span class="mini">K8s</span><span class="mini">MCP</span></div>
+    <div class="card"><h3>dbhub MCP + Git Hook</h3><p>分支切换自动同步数据库配置</p><ul><li>post-checkout hook → 读 conf.yml → 转 DSN → 写 dbhub.toml</li><li>config-watcher 500ms 防抖热重载</li><li>Go DSN → MySQL DSN 自动转换</li><li>多项目 &lt;项目名&gt;-current 扩展</li></ul><span class="mini">Go</span><span class="mini">MySQL</span><span class="mini">Git</span></div>
+    <div class="card"><h3>CodeGraph 知识图谱</h3><p>代码语义搜索代替 grep</p><ul><li>10 个 MCP 工具：context / search / trace / callers / callees / impact / node / files / status</li><li>20+ 语言 · 多分支增量索引 · Go 框架路由</li></ul><span class="mini">MCP</span><span class="mini">Go</span><span class="mini">TS</span></div>
+    <div class="card"><h3>CCX 多模型路由</h3><p>DeepSeek + DashScope 双通道</p><ul><li>文本推理（DS）+ 多模态视觉（千问）</li><li>视觉路由 · 3 个常见配置错误排坑</li></ul><span class="mini">CCX</span><span class="mini">DeepSeek</span><span class="mini">DashScope</span></div>
+    <div class="card"><h3>OpenCode 环境</h3><p>ulw-loop 自验证循环</p><ul><li>Ghostty + yazi 终端搭配 · 多轮上下文管理</li><li>插件生态：CodeGraph/dbhub/lb/lark-cli/fmt</li><li>配置自动更新 + /handoff 会话恢复</li></ul><span class="mini">OpenCode</span><span class="mini">Terminal</span></div>
+    <div class="card"><h3>Go 效率工具</h3><p>日常开发积累</p><ul><li>Air 热编译 · AGENTS.md 项目记忆</li><li>git worktree 隔离 · TDD · subagent 模式</li><li>CHANGELOG.md 生命周期管理</li></ul><span class="mini">Go</span><span class="mini">DevTools</span></div>
   </div>
 </div>
 
-<!-- Open Source -->
-<div class="section">
+<div class="section reveal">
   <h2>🚀 开源项目</h2>
   <div class="cards">
-    <div class="card">
-      <h3><a href="https://github.com/coder-wangbin/ai-driven-dev-workflow">📄 AI 全链路工作流文档</a></h3>
-      <p>完整工程文档：从需求到交付的闭环实践。含 Mermaid 架构图、效果对比、踩坑记录、dbhub 配置指南。</p>
-      <span class="mini">Docs</span><span class="mini">Mermaid</span>
-    </div>
-    <div class="card">
-      <h3><a href="https://github.com/coder-wangbin/opencode-skill-localizer">🌍 Skill 描述本地化</a></h3>
-      <p>翻译 AI 技能描述不被 git pull 覆盖。利用 git skip-worktree 保护本地修改，支持批量替换。</p>
-      <span class="mini">Shell</span><span class="mini">Git</span>
-    </div>
-    <div class="card">
-      <h3><a href="https://github.com/coder-wangbin/codex-goal-parallel">🎯 并行任务分解</a></h3>
-      <p>CodeX skill：自动并行拆解任务 + 子 Agent 生命周期管理。</p>
-      <span class="mini">CodeX</span>
-    </div>
+    <div class="card"><h3><a href="https://github.com/coder-wangbin/ai-driven-dev-workflow">📄 AI 全链路工作流文档</a></h3><p>完整工程文档：从需求到交付的闭环实践。含 Mermaid 架构图、效果对比、踩坑记录。</p><span class="mini">Docs</span><span class="mini">Mermaid</span></div>
+    <div class="card"><h3><a href="https://github.com/coder-wangbin/opencode-skill-localizer">🌍 Skill 描述本地化</a></h3><p>翻译 AI 技能描述不被 git pull 覆盖。git skip-worktree 保护本地修改。</p><span class="mini">Shell</span><span class="mini">Git</span></div>
+    <div class="card"><h3><a href="https://github.com/coder-wangbin/codex-goal-parallel">🎯 并行任务分解</a></h3><p>CodeX skill：自动并行拆解任务 + 子 Agent 生命周期管理。</p><span class="mini">CodeX</span></div>
   </div>
 </div>
 
-<!-- Knowledge -->
-<div class="section">
+<div class="section reveal">
   <h2>📚 知识积累</h2>
   <div class="cards">
-    <div class="card"><h3>OpenCode 全配置</h3><p>ulw-loop · Ghostty + yazi · 上下文管理 · 插件 & MCP · 自动更新 · /handoff 恢复</p></div>
+    <div class="card"><h3>OpenCode 全配置</h3><p>ulw-loop · Ghostty+yazi · 上下文管理 · 插件 & MCP · 自动更新 · handoff</p></div>
     <div class="card"><h3>CodeGraph 实践</h3><p>MCP 接入 · 10 工具详解 · 多分支 · Go 配置 · 框架路由 · 索引管理</p></div>
-    <div class="card"><h3>多模型路由</h3><p>CCX + DS + DashScope · 视觉路由 · 3 个致命配置错误 · 验证方法</p></div>
+    <div class="card"><h3>多模型路由</h3><p>CCX+DS+DashScope · 视觉路由 · 3 个致命配置错误 · 验证方法</p></div>
     <div class="card"><h3>Go 开发</h3><p>Air 热编译 · AGENTS.md · worktree · TDD · subagent · 会话健康检查</p></div>
     <div class="card"><h3>RAG & 搜索</h3><p>SearchRAG · SearchApi · 检索增强生成实践</p></div>
     <div class="card"><h3>DevOps 设计</h3><p>三层架构 · SSO · CI 模板 · MCP Server · 部署流水线 · 飞书通知</p></div>
   </div>
 </div>
 
-<!-- Contact -->
 <div class="section" style="text-align:center;padding-bottom:1rem;">
   <p style="font-size:1.1rem;color:var(--fg2);">
     <a href="mailto:coder.wangbin@gmail.com">📧 coder.wangbin@gmail.com</a>
@@ -288,5 +179,63 @@ a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:under
   <p>"瓶颈不在模型，在模型外的工程系统。"</p>
   <p style="margin-top:.5rem;">© 2026 coder-wangbin</p>
 </div>
+
+<script>
+// Theme toggle
+(function(){
+  const saved = localStorage.getItem('theme');
+  if(saved==='dark') document.documentElement.classList.add('dark');
+  else if(saved==='light') document.documentElement.classList.remove('dark');
+})();
+function toggleTheme(){
+  const d=document.documentElement;
+  d.classList.toggle('dark');
+  localStorage.setItem('theme',d.classList.contains('dark')?'dark':'light');
+}
+
+// Scroll reveal
+const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Count-up animation
+function animateCount(el){
+  const target=+el.dataset.target;
+  if(!target)return;
+  const dur=1500,start=performance.now();
+  function tick(now){
+    const p=Math.min((now-start)/dur,1);
+    el.textContent=Math.floor(p*target)+(target>10?'+':'');
+    if(p<1)requestAnimationFrame(tick);
+    else el.textContent=target+(target>10?'+':'');
+  }
+  requestAnimationFrame(tick);
+}
+const countObs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){animateCount(e.target);countObs.unobserve(e.target)}})},{threshold:.5});
+document.querySelectorAll('.num[data-target]').forEach(el=>countObs.observe(el));
+
+// Particle background
+(function(){
+  const c=document.getElementById('particles'),ctx=c.getContext('2d');
+  let w,h,ps=[];
+  function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight}
+  resize();window.addEventListener('resize',resize);
+  for(let i=0;i<40;i++)ps.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+1,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5});
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    const style=getComputedStyle(document.documentElement);
+    const clr=style.getPropertyValue('--accent').trim()||'#2563eb';
+    ps.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=clr;ctx.globalAlpha=.5;ctx.fill();
+    });
+    // Draw lines between nearby particles
+    ps.forEach((a,i)=>{ps.slice(i+1).forEach(b=>{const d=Math.hypot(a.x-b.x,a.y-b.y);if(d<120){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=clr;ctx.globalAlpha=.1*(1-d/120);ctx.lineWidth=.5;ctx.stroke()}})});
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
 </body>
 </html>
