@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>coder-wangbin · Go Backend Developer</title>
-<meta name="description" content="coder-wangbin (coder-wangbin) - Go Backend Developer. AI-Driven Full-Chain Development Workflow Builder. K8s + DevOps Toolchain Designer.">
+<title>coder-wangbin · Go 后端开发</title>
+<meta name="description" content="Go 后端开发 · AI 全链路研发工作流 · K8s + DevOps 工具链">
 <style>
 :root {
   --bg: #ffffff; --bg2: #f8fafc; --bg3: #f1f5f9;
   --fg: #0f172a; --fg2: #334155; --fg3: #64748b;
   --border: #e2e8f0; --accent: #2563eb; --accent2: #3b82f6;
-  --green: #059669; --orange: #d97706; --red: #dc2626;
   --radius: 12px; --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
 }
 @media (prefers-color-scheme: dark) {
@@ -24,7 +23,6 @@
 body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:var(--bg); color:var(--fg); line-height:1.7; }
 .container { max-width:960px; margin:0 auto; padding:0 1.5rem; }
 
-/* Hero */
 .hero { padding:4rem 0 2rem; text-align:center; border-bottom:1px solid var(--border); }
 .avatar { width:88px; height:88px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:2rem; font-weight:700; margin-bottom:1rem; }
 .hero h1 { font-size:2.2rem; font-weight:800; margin-bottom:.25rem; }
@@ -32,19 +30,16 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; backg
 .hero .tags { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; }
 .tag { padding:4px 14px; border-radius:20px; font-size:.82rem; font-weight:500; background:var(--bg3); color:var(--fg2); }
 
-/* Stats */
 .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; padding:2rem 0; text-align:center; }
 .stat { background:var(--bg2); border-radius:var(--radius); padding:1.2rem .5rem; box-shadow:var(--shadow); }
 .stat .num { font-size:1.6rem; font-weight:800; color:var(--accent); }
 .stat .label { font-size:.8rem; color:var(--fg3); margin-top:.25rem; }
 @media (max-width:600px) { .stats { grid-template-columns:repeat(2,1fr); } }
 
-/* Section */
 .section { padding:2.5rem 0; }
 .section h2 { font-size:1.4rem; font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:.5rem; }
 .section h2::after { content:''; flex:1; height:1px; background:var(--border); margin-left:.5rem; }
 
-/* Workflow */
 .flow { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:.75rem; }
 .flow-card { background:var(--bg2); border-radius:var(--radius); padding:1rem; text-align:center; box-shadow:var(--shadow); position:relative; }
 .flow-card .icon { font-size:1.5rem; margin-bottom:.5rem; }
@@ -54,7 +49,6 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; backg
 .flow-card:last-child::after { display:none; }
 @media (max-width:640px) { .flow { grid-template-columns:1fr 1fr; } .flow-card:nth-child(even)::after { display:none; } }
 
-/* Cards */
 .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; }
 .card { background:var(--bg2); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow); border:1px solid var(--border); transition:transform .15s,box-shadow .15s; }
 .card:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,.1); }
@@ -65,159 +59,147 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; backg
 .card .tags-row { display:flex; gap:.35rem; flex-wrap:wrap; }
 .card .mini-tag { padding:2px 10px; border-radius:12px; font-size:.72rem; background:var(--bg3); color:var(--fg3); }
 
-/* Feature list */
 .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:.75rem; }
 .feature { background:var(--bg2); border-radius:var(--radius); padding:1rem 1.2rem; box-shadow:var(--shadow); border-left:3px solid var(--accent); }
 .feature h4 { font-size:.88rem; font-weight:600; }
 .feature p { font-size:.78rem; color:var(--fg3); margin-top:.25rem; }
 
-/* Footer */
 .footer { text-align:center; padding:2rem 0; border-top:1px solid var(--border); color:var(--fg3); font-size:.85rem; }
 .footer a { color:var(--accent); text-decoration:none; }
-
 a { color:var(--accent); text-decoration:none; }
 a:hover { text-decoration:underline; }
 </style>
 </head>
 <body>
 
-<!-- Hero -->
 <div class="hero">
   <div class="avatar">CW</div>
   <h1>coder-wangbin</h1>
-  <p class="subtitle">Go Backend Developer · AI-Driven Full-Chain Workflow Builder</p>
+  <p class="subtitle">Go 后端开发 · 6+ 年 · 专注 AI 驱动全链路研发效能提升</p>
   <div class="tags">
-    <span class="tag">6+ Years</span>
     <span class="tag">Go</span>
     <span class="tag">Kubernetes</span>
     <span class="tag">DevOps</span>
-    <span class="tag">MCP Protocol</span>
-    <span class="tag">AI Coding</span>
+    <span class="tag">MCP 协议</span>
+    <span class="tag">AI 辅助开发</span>
   </div>
 </div>
 
 <div class="container">
-<!-- Stats -->
 <div class="stats">
-  <div class="stat"><div class="num">6+</div><div class="label">Years Experience</div></div>
-  <div class="stat"><div class="num">11</div><div class="label">MCP Tools Built</div></div>
-  <div class="stat"><div class="num">5</div><div class="label">Open Source Projects</div></div>
-  <div class="stat"><div class="num">7</div><div class="label">Stages Automated</div></div>
+  <div class="stat"><div class="num">6+</div><div class="label">年开发经验</div></div>
+  <div class="stat"><div class="num">11</div><div class="label">个 MCP 工具</div></div>
+  <div class="stat"><div class="num">5</div><div class="label">个开源项目</div></div>
+  <div class="stat"><div class="num">7</div><div class="label">个环节自动化</div></div>
 </div>
 
-<!-- Workflow -->
 <div class="section">
-  <h2>🏗️ AI-Driven Full-Chain Workflow</h2>
+  <h2>🏗️ AI 全链路研发工作流</h2>
   <div class="flow">
-    <div class="flow-card"><div class="icon">📋</div><h3>Req Analysis</h3><p>Agent reads PRD, flags gaps</p></div>
-    <div class="flow-card"><div class="icon">📝</div><h3>Design Spec</h3><p>Agent writes & syncs docs</p></div>
-    <div class="flow-card"><div class="icon">💻</div><h3>Coding</h3><p>ulw-loop self-verify</p></div>
-    <div class="flow-card"><div class="icon">🔍</div><h3>Oracle Review</h3><p>Reject → Redo; Pass → Deploy</p></div>
-    <div class="flow-card"><div class="icon">🚀</div><h3>K8s Deploy</h3><p>Push → CI → auto-deploy</p></div>
-    <div class="flow-card"><div class="icon">🩺</div><h3>Diagnose</h3><p>Agent reads logs, self-heals</p></div>
-    <div class="flow-card"><div class="icon">🐛</div><h3>Bug Fix</h3><p>Auto-fix → deploy → notify</p></div>
+    <div class="flow-card"><div class="icon">📋</div><h3>需求分析</h3><p>AI 自动读 PRD、查漏补缺</p></div>
+    <div class="flow-card"><div class="icon">📝</div><h3>方案设计</h3><p>AI 写方案、同步文档</p></div>
+    <div class="flow-card"><div class="icon">💻</div><h3>编码开发</h3><p>自验证循环，写完即测</p></div>
+    <div class="flow-card"><div class="icon">🔍</div><h3>审核把关</h3><p>不通过打回重做</p></div>
+    <div class="flow-card"><div class="icon">🚀</div><h3>自动部署</h3><p>push 即部署，全自动</p></div>
+    <div class="flow-card"><div class="icon">🩺</div><h3>故障诊断</h3><p>AI 读日志、自动定位</p></div>
+    <div class="flow-card"><div class="icon">🐛</div><h3>Bug 修复</h3><p>自动修→部署→通知</p></div>
   </div>
 </div>
 
-<!-- Key Capabilities -->
 <div class="section">
-  <h2>⚡ Key Capabilities</h2>
+  <h2>⚡ 核心能力</h2>
   <div class="features">
-    <div class="feature"><h4>📖 Code Knowledge Graph</h4><p>Semantic code search via MCP — reduced token usage & tool calls</p></div>
-    <div class="feature"><h4>🗄️ DB Branch Auto-Sync</h4><p>Git hook auto-switches DSN on checkout, hot-reload</p></div>
-    <div class="feature"><h4>🔧 K8s MCP Server</h4><p>11 tools: list_pods, get_logs, diagnose, restart_deployment, etc.</p></div>
-    <div class="feature"><h4>🔄 ulw-loop /goal</h4><p>Continuous self-verification with Oracle review gate</p></div>
-    <div class="feature"><h4>🐛 Bug Auto-Fix Pipeline</h4><p>Agent monitors → auto-fix → verify → deploy → notify</p></div>
-    <div class="feature"><h4>📄 Doc Sync</h4><p>Design spec auto-syncs to cloud docs, no manual copy-paste</p></div>
+    <div class="feature"><h4>📖 代码知识图谱</h4><p>语义搜索替代 grep，省 token、少调工具</p></div>
+    <div class="feature"><h4>🗄️ 数据库自动切换</h4><p>切分支自动同步 DSN，再也不用担心切错库</p></div>
+    <div class="feature"><h4>🔧 K8s 运维 MCP</h4><p>11 个工具：看 Pod、查日志、诊断、重启、CI 日志</p></div>
+    <div class="feature"><h4>🔄 自验证循环</h4><p>编译→测试→诊断→修复，审核不通过就重来</p></div>
+    <div class="feature"><h4>🐛 Bug 自动修复</h4><p>监控 Bug 列表→自动定位→修复→部署→通知</p></div>
+    <div class="feature"><h4>📄 文档自动同步</h4><p>设计方案写完直接落文档，不用复制粘贴</p></div>
   </div>
 </div>
 
-<!-- Projects -->
 <div class="section">
-  <h2>🚀 Open Source</h2>
+  <h2>🚀 开源项目</h2>
   <div class="cards">
     <div class="card">
-      <h3><a href="https://github.com/coder-wangbin/ai-driven-dev-workflow">📄 ai-driven-dev-workflow</a></h3>
-      <p>完整工程文档：AI 驱动全链路开发工作流 —— 从需求分析到自动部署的闭环实践。含 Mermaid 架构图、踩坑记录。</p>
-      <div class="tags-row"><span class="mini-tag">Docs</span><span class="mini-tag">Mermaid</span><span class="mini-tag">Go</span><span class="mini-tag">DevOps</span></div>
+      <h3><a href="https://github.com/coder-wangbin/ai-driven-dev-workflow">📄 AI 全链路工作流文档</a></h3>
+      <p>完整工程文档：从需求分析到自动部署的闭环实践。含架构图、踩坑记录、效果对比。</p>
+      <div class="tags-row"><span class="mini-tag">文档</span><span class="mini-tag">Mermaid</span><span class="mini-tag">Go</span><span class="mini-tag">DevOps</span></div>
     </div>
     <div class="card">
-      <h3><a href="https://github.com/coder-wangbin/opencode-skill-localizer">🌍 skill-localizer</a></h3>
-      <p>AI 技能描述本地化工具 — git skip-worktree 保护翻译不被 git pull 覆盖。批量替换 + 符号链接发现。</p>
-      <div class="tags-row"><span class="mini-tag">Shell</span><span class="mini-tag">Git</span><span class="mini-tag">OpenCode</span></div>
+      <h3><a href="https://github.com/coder-wangbin/opencode-skill-localizer">🌍 Skill 描述本地化</a></h3>
+      <p>翻译 AI 技能描述不怕被 git pull 覆盖。批量替换 + 符号链接发现。</p>
+      <div class="tags-row"><span class="mini-tag">Shell</span><span class="mini-tag">Git</span></div>
     </div>
     <div class="card">
-      <h3><a href="https://github.com/coder-wangbin/codex-goal-parallel">🎯 codex-goal-parallel</a></h3>
-      <p>CodeX skill：自动并行任务分解 + 子 Agent 生命周期管理。</p>
+      <h3><a href="https://github.com/coder-wangbin/codex-goal-parallel">🎯 并行任务分解</a></h3>
+      <p>CodeX skill：自动并行拆解任务 + 子 Agent 生命周期管理。</p>
       <div class="tags-row"><span class="mini-tag">CodeX</span><span class="mini-tag">AI Agent</span></div>
     </div>
   </div>
 </div>
 
-<!-- Tech Stack -->
 <div class="section">
-  <h2>🧰 Tech Stack</h2>
+  <h2>🧰 技术栈</h2>
   <div class="features">
-    <div class="feature"><h4>Languages</h4><p>Go · Python · Shell</p></div>
-    <div class="feature"><h4>Cloud Native</h4><p>Kubernetes · Docker · Kuboard</p></div>
-    <div class="feature"><h4>CI/CD</h4><p>GitLab CI · Self-built CLI</p></div>
-    <div class="feature"><h4>AI & MCP</h4><p>OpenCode · Codex · CodeGraph · lark-cli</p></div>
-    <div class="feature"><h4>Databases</h4><p>MySQL · Redis · dbhub MCP</p></div>
-    <div class="feature"><h4>Infra</h4><p>Linux · macOS · Nginx</p></div>
+    <div class="feature"><h4>语言</h4><p>Go · Python · Shell</p></div>
+    <div class="feature"><h4>云原生</h4><p>Kubernetes · Docker · Kuboard</p></div>
+    <div class="feature"><h4>CI/CD</h4><p>GitLab CI · 自研部署 CLI</p></div>
+    <div class="feature"><h4>AI & MCP</h4><p>OpenCode · Codex · CodeGraph</p></div>
+    <div class="feature"><h4>数据库</h4><p>MySQL · Redis · dbhub MCP</p></div>
+    <div class="feature"><h4>基础设施</h4><p>Linux · macOS · Nginx</p></div>
   </div>
 </div>
 
-<!-- Learning Notes -->
 <div class="section">
-  <h2>📚 Learning Notes</h2>
+  <h2>📚 知识积累</h2>
   <div class="cards">
     <div class="card">
       <h3>OpenCode 最佳实践</h3>
-      <p>ulw-loop 模式配置、多轮对话上下文管理、Ghostty + yazi 终端搭配、Skills & MCP 生态。</p>
-      <div class="tags-row"><span class="mini-tag">OpenCode</span><span class="mini-tag">DevTools</span></div>
+      <p>ulw-loop 模式配置、多轮对话上下文管理、终端搭配 Ghostty + yazi、Skills & MCP 生态。</p>
+      <div class="tags-row"><span class="mini-tag">OpenCode</span></div>
     </div>
     <div class="card">
       <h3>CodeGraph 代码知识图谱</h3>
-      <p>MCP 接入配置、10 大工具详解、多分支最佳实践、Go 项目特殊配置。</p>
-      <div class="tags-row"><span class="mini-tag">CodeGraph</span><span class="mini-tag">MCP</span><span class="mini-tag">Go</span></div>
+      <p>MCP 接入配置、10 个工具详解、多分支最佳实践、Go 项目特殊配置。</p>
+      <div class="tags-row"><span class="mini-tag">CodeGraph</span><span class="mini-tag">MCP</span></div>
     </div>
     <div class="card">
-      <h3>多模型接入配置</h3>
-      <p>CodeX + CCX 接入 DeepSeek & DashScope 多模型路由。视觉路由机制、踩坑记录。</p>
-      <div class="tags-row"><span class="mini-tag">CCX</span><span class="mini-tag">DeepSeek</span><span class="mini-tag">DashScope</span></div>
+      <h3>多模型接入 & 路由</h3>
+      <p>CCX 接入 DeepSeek & DashScope、视觉路由机制、常见配置错误排坑。</p>
+      <div class="tags-row"><span class="mini-tag">CCX</span><span class="mini-tag">DeepSeek</span></div>
     </div>
     <div class="card">
       <h3>Go 热编译 · Air</h3>
-      <p>使用 Air 实现 Go 项目热编译，保存即重载，大幅提升开发效率。</p>
-      <div class="tags-row"><span class="mini-tag">Go</span><span class="mini-tag">DevTools</span></div>
+      <p>保存即重载，大幅缩短开发反馈周期。</p>
+      <div class="tags-row"><span class="mini-tag">Go</span></div>
     </div>
     <div class="card">
       <h3>DevOps 工具链设计</h3>
-      <p>K8s 自动部署方案、Kuboard SSO、CI 模板、MCP Server 11 工具设计。</p>
-      <div class="tags-row"><span class="mini-tag">K8s</span><span class="mini-tag">CI/CD</span><span class="mini-tag">MCP</span></div>
+      <p>K8s 自动部署方案、Kuboard SSO、CI 模板、MCP Server 11 工具设计思路。</p>
+      <div class="tags-row"><span class="mini-tag">K8s</span><span class="mini-tag">CI/CD</span></div>
     </div>
     <div class="card">
       <h3>SearchRAG & SearchApi</h3>
-      <p>检索增强生成与搜索 API 的实践经验总结。</p>
+      <p>检索增强生成与搜索 API 的实践经验。</p>
       <div class="tags-row"><span class="mini-tag">RAG</span><span class="mini-tag">API</span></div>
     </div>
   </div>
 </div>
 
-<!-- Contact -->
 <div class="section" style="text-align:center; padding-bottom:1rem;">
   <p style="font-size:1.1rem; color:var(--fg2);">
     <a href="mailto:coder.wangbin@gmail.com">📧 coder.wangbin@gmail.com</a>
     &nbsp;·&nbsp;
     <a href="https://github.com/coder-wangbin">🐙 GitHub</a>
     &nbsp;·&nbsp;
-    <a href="https://github.com/coder-wangbin/ai-driven-dev-workflow">📄 Workflow Doc</a>
+    <a href="https://github.com/coder-wangbin/ai-driven-dev-workflow">📄 工作流文档</a>
   </p>
 </div>
 </div>
 
 <div class="footer">
-  <p>"The bottleneck is not the model — it's the engineering system outside the model."</p>
+  <p>"瓶颈不在模型，在模型外的工程系统。"</p>
   <p style="margin-top:.5rem;">© 2026 coder-wangbin</p>
 </div>
 </body>
